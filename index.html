@@ -1,0 +1,24 @@
+<header>
+    <meta charset="utf-8">
+</header>
+
+<body>
+    <div id="root"></div>
+
+    <script>
+
+        const ws = new WebSocket("ws://localhost:8001/ws")
+
+        ws.onopen = function onOpen() {
+            console.log("websocket Connected !!")
+            setInterval(() => {
+                ws.send("Hello Server")
+            }, 1000);
+        }
+
+        ws.onmessage = function onMessage(evt) {
+            console.log(evt.data)
+        }
+
+    </script>
+</body>
